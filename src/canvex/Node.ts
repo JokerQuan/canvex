@@ -33,7 +33,6 @@ export abstract class Node implements INode{
   ctx: CanvasRenderingContext2D | null = null;
   parent?: Node | null = null;
   children?: Node[] = [];
-  // attrs: Options = {} as Options;
   constructor(options: INode) {
     this.setAttrs(options);
   }
@@ -43,7 +42,7 @@ export abstract class Node implements INode{
       this[key] = attrs[key];
     }
     if (this.stage) {
-      requestAnimationFrame(() => this.stage.render());
+      this.stage.render()
     }
   }
 
