@@ -2,6 +2,7 @@ import Canvex from "./canvex";
 import { Node } from "./canvex/Node";
 import { Vec2D } from "./canvex/Vec2D";
 import ypng from "./assets/1.png";
+import { Tween } from "./canvex/animation/Tween";
 
 
 const { 
@@ -11,7 +12,6 @@ const {
   Line,
   Rect,
   Anim,
-  Tween,
 } = Canvex;
 
 const example1 = () => {
@@ -100,9 +100,15 @@ const example1 = () => {
     readFileToSetBackground(rect2)
   }
   rect2.onClick = () => {
-    const anim = new Anim(rect2, {
-      rotate: rect2.rotate + 50
-    }, 1000, Tween.linear);
+    const anim = new Anim({
+      from: {
+        rotate: rect2.rotate,
+      },
+      to: {
+        rotate: rect2.rotate + 50
+      },
+      duration: 1000
+    });
     anim.start();
     anim.onAnim = (v) => {
       rect2.setAttrs(v);
@@ -174,21 +180,34 @@ const example1 = () => {
   // 动画测试
   const animCircle = new Circle({x: 100, y: 600, radius: 30, draggable: true, background: 'white', borderColor: 'black'});
   stage.appendElement(animCircle);
-  animCircle.onClick = () => {
-    const anim1 = new Anim(animCircle, {
+  const anim1 = new Anim({
+    from: animCircle,
+    to: {
       x: 600,
       y: 700,
       radius: 60
-    }, 3000, Tween.ease);
-    anim1.onAnim = (values) => {
-      animCircle.setAttrs(values);
-    };
-    anim1.onFinish = () => {
-      animCircle.setAttrs({background: 'skyblue'});
-    }
-    anim1.start();
+    },
+    duration: 2000,
+    // delay: 1000,
+    count: Infinity,
+    direction: 'alternate',
+    tween: Tween['ease-in-out']
+  });
+  anim1.onAnim = (values) => {
+    animCircle.setAttrs(values);
+  };
+  anim1.onFinish = () => {
+    animCircle.setAttrs({background: 'skyblue'});
+    console.log('finish');
+    
   }
-
+  anim1.start();
+  animCircle.onHover = () => {
+    anim1.pause();
+  }
+  animCircle.onHoverOut = () => {
+    anim1.resume();
+  }
 
   // hover 测试
   const hoverParent = new Circle({x: 800, y: 620, radius: 50, draggable: true, background: 'white', borderColor: 'black'});

@@ -1,6 +1,6 @@
 import Canvex from './canvex';
 
-const { Stage, Rect, Anim, Tween } = Canvex;
+const { Stage, Rect, Anim } = Canvex;
 
 // 图表动画大体思路，待封装
 export const example2 = () => {
@@ -78,14 +78,14 @@ export const example2 = () => {
     isStartState = !isStartState;
 
     rects0.forEach((r, index) => {
-      const anim = new Anim(r, toStates0[index], 500, Tween.ease);
+      const anim = new Anim({from: r, to: toStates0[index], duration: 500});
       anim.start();
       anim.onAnim = (values) => {
         r.setAttrs(values);
       }
     })
     rects1.forEach((r, index) => {
-      const anim = new Anim(r, toStates1[index], 500, Tween.ease);
+      const anim = new Anim({from: r, to: toStates1[index], duration: 500});
       anim.start();
       anim.onAnim = (values) => {
         r.setAttrs(values);
