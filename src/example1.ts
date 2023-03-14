@@ -72,12 +72,9 @@ const example1 = () => {
   }
 
   // 矩形
-  const rect = new Rect({x: 30, y: 40, width: 50, height: 60, draggable: true, background: 'skyblue'});
+  const rect = new Rect({x: 30, y: 40, width: 50, height: 60, draggable: true, style: 'stroke', background: 'skyblue', shadowColor: "black", shadowType: 'outter', shadowOffsetX:10, shadowOffsetY: 10, shadowBlur: 5, shadowOpacity: 1});
   rect.onClick = () => {
     rect.setAttrs({background: rect.background === 'skyblue' ? '#7367F0' : 'skyblue'})
-  }
-  rect.onDrag = (x, y) => {
-    rect.setAttrs({x, y});
   }
   stage.appendElement(rect);
 
@@ -97,7 +94,7 @@ const example1 = () => {
     {x: 520, y:800},
     {x: 500, y:750},
   ]
-  const rect2 = new Polygon({points, draggable: true, background: linear, rotate: 45});
+  const rect2 = new Polygon({points, draggable: true, background: linear, rotate: 45, shadowColor: "black", shadowOffsetX: 20, shadowOffsetY: 20, shadowBlur: 10, shadowOpacity: 0.5});
   stage.appendElement(rect2);
   rect2.onClick = () => {
     readFileToSetBackground(rect2)
@@ -137,7 +134,7 @@ const example1 = () => {
   const radial = {
     colors: ['#2CD8D5', '#6B8DD6', '#8E37D7']
   }
-  const circleR = new Circle({x: 600, y: 200, radius: 80, background: radial, draggable: true});
+  const circleR = new Circle({x: 600, y: 200, radius: 80, background: radial, draggable: true, shadowColor:'black', shadowOffsetX:10, shadowOffsetY: 10, shadowBlur: 10});
   stage.appendElement(circleR);
   circleR.onClick = () => {
     circleR.setAttrs({opacity: 0.5});

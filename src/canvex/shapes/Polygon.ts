@@ -116,7 +116,7 @@ export class Polygon extends Shape implements IPolygon {
   }
 
   render(): void {
-    let { x, y, width, height, background = 'white', opacity, rotate, style, lineWidth, backgroundImage } = this;
+    let { x, y, width, height, background = 'white', opacity, rotate, style, lineWidth, backgroundImage, shadowColor = '#000', shadowBlur = 0, shadowOffsetX = 0, shadowOffsetY = 0 } = this;
     const ctx = this.ctx!;
     ctx.globalAlpha = opacity;
 
@@ -133,6 +133,10 @@ export class Polygon extends Shape implements IPolygon {
       }
     }
 
+    ctx.shadowColor = shadowColor;
+    ctx.shadowBlur = shadowBlur;
+    ctx.shadowOffsetX = shadowOffsetX;
+    ctx.shadowOffsetY = shadowOffsetY;
 
     if (style === 'stroke') {
       ctx.lineWidth = lineWidth;

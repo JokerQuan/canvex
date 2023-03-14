@@ -1,14 +1,11 @@
 import { Node, INode } from "./Node";
-import { Vec2D } from "./Vec2D";
 
 export interface IShape extends INode {
   shadowColor?: string;
   shadowBlur?: number;
-  shadowOffset?: Vec2D;
   shadowOffsetX?: number;
   shadowOffsetY?: number;
   shadowOpacity?: number;
-  shadowEnabled?: boolean;
 }
 
 export abstract class Shape extends Node implements IShape {

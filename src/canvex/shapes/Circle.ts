@@ -16,7 +16,7 @@ export class Circle extends Shape implements ICircle {
   }
 
   render(): void {
-    let { x, y, radius, background = 'white', borderColor = 'black', opacity, backgroundImage } = this;
+    let { x, y, radius, background = 'white', borderColor = 'black', opacity, backgroundImage,  shadowColor = '#000', shadowBlur = 0, shadowOffsetX = 0, shadowOffsetY = 0 } = this;
     const ctx = this.ctx!;
     ctx.globalAlpha = opacity;
     
@@ -30,6 +30,10 @@ export class Circle extends Shape implements ICircle {
         background.addColorStop(step * i, colors[i]);
       }
     }
+    ctx.shadowColor = shadowColor;
+    ctx.shadowBlur = shadowBlur;
+    ctx.shadowOffsetX = shadowOffsetX;
+    ctx.shadowOffsetY = shadowOffsetY;
     ctx.fillStyle = background;
     ctx.fill()
     if (backgroundImage) {
