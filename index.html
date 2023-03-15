@@ -10,6 +10,12 @@
         margin: 0;
         padding: 0;
       }
+      #fps {
+        position: fixed;
+      }
+      #fps span {
+        user-select: none;
+      }
       #container1 {
         margin: 20px;
         width: 900px;
@@ -27,9 +33,28 @@
     </style>
   </head>
   <body>
+    <div id="fps">
+      <span>FPS:</span><span id="fps-num">0</span>
+    </div>
     <div id="container1"></div>
     <div id="container2"></div>
     <script type="module" src="/src/example1.ts"></script>
     <script type="module" src="/src/example2.ts"></script>
+    <script>
+      const fps = document.querySelector("#fps-num");
+      let justnow = performance.now();
+      let frameCount = 0;
+      const showFPS = () => {
+        const now = performance.now();
+        frameCount++;
+        if (now - justnow > 200) {
+          fps.innerHTML = (1000 / ((now - justnow) / frameCount)).toFixed(0);
+          justnow = now;
+          frameCount = 0;
+        }
+        requestAnimationFrame(showFPS);
+      }
+      showFPS();
+    </script>
   </body>
 </html>
