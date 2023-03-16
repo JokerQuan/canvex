@@ -209,6 +209,29 @@ const example1 = () => {
     anim1.resume();
   }
 
+  // 动画性能测试
+  // for (let i = 0; i < 40; i++) {
+  //   const animCircle = new Circle({x: 100, y: 600, radius: 30, draggable: true, background: 'white', borderColor: 'black'});
+  //   stage.appendElement(animCircle);
+  //   const anim1 = new Anim({
+  //     from: animCircle,
+  //     to: {
+  //       x: 600,
+  //       y: 700,
+  //       radius: 60
+  //     },
+  //     duration: 2000,
+  //     delay: i * 10,
+  //     count: Infinity,
+  //     direction: 'alternate',
+  //     tween: Tween['ease-in-out']
+  //   });
+  //   anim1.onAnim = (values) => {
+  //     animCircle.setAttrs(values);
+  //   };
+  //   anim1.start();
+  // }
+
   // hover 测试
   const hoverParent = new Circle({x: 800, y: 620, radius: 50, draggable: true, background: 'white', borderColor: 'black'});
   stage.appendElement(hoverParent);
