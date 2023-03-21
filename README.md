@@ -1,5 +1,5 @@
 # Canvex
-简单易用的 Canvas 渲染引擎，基于 canvas 2d 绘图 API 封装。
+简单易用的 Canvas 渲染引擎，基于 canvas 2d 绘图 API 封装。[示例](https://canvex.vercel.app/)
 ---
 ### demo
 ```javascript
