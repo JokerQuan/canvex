@@ -75,6 +75,11 @@
   gap: 20px;
 }
 
+.content .demos .demo a{
+  color: rgb(83,168,201);
+  text-decoration: none;
+}
+
 .content .demos .demo .preview {
   /* padding: 20px; */
   box-shadow: 0 0 5px #00000055;
