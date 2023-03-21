@@ -1,10 +1,10 @@
-import Canvex from './canvex';
+import Canvex from '../canvex';
 
 const { Stage, Rect, Anim } = Canvex;
 
 // 图表动画大体思路，待封装
-export const example2 = () => {
-  const stage = new Stage("#container2");
+export const demo_charts = () => {
+  const stage = new Stage("#demo-charts");
   const data = [
       [18.9, 28.8, 39.3, 81.4, 47, 20.3, 24, 35.6],
       [18.9, 23.2, 34.5, 99.7, 52.6, 35.5, 37.4, 42.4]
@@ -93,8 +93,8 @@ export const example2 = () => {
     })
   }
 
-  stage._canvas.addEventListener('click', doAnim)
+  setInterval(() => doAnim(), 1500);
   
 }
 
-example2();
+demo_charts();

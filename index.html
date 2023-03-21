@@ -2,44 +2,73 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Canvex Demo</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      #fps {
-        position: fixed;
-      }
-      #fps span {
-        user-select: none;
-      }
-      #container1 {
-        margin: 20px;
-        width: 900px;
-        height: 800px;
-        border: 1px solid black;
-        float: left;
-      }
-      #container2 {
-        margin: 20px;
-        width: 500px;
-        height: 300px;
-        border: 1px solid black;
-        float: left;
-      }
-    </style>
+    <link rel="stylesheet" href="./index.css">
   </head>
   <body>
-    <div id="fps">
-      <span>FPS:</span><span id="fps-num">0</span>
+    <div class="header">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="40" height="40">
+          <rect x="0" y="0" width="400" height="400" fill="#ffffff" />
+          <path d="M200,50 L350,200 L200,350 L50,200 Z" fill="#007acc" />
+          <path d="M200,75 L325,200 L200,325 L75,200 Z" fill="#ffffff" />
+          <path d="M200,100 L300,200 L200,300 L100,200 Z" fill="#42b883" />
+        </svg>
+        <span>Canvex</span>
+      </div>
+      <div class="right">
+        <a href="https://github.com/JokerQuan/canvex" target="_blank" style="margin-right: 20px;">
+          <img alt="github" src="./src/assets/GitHub.png" />
+        </a>
+      </div>
     </div>
-    <div id="container1"></div>
-    <div id="container2"></div>
-    <script type="module" src="/src/example1.ts"></script>
-    <script type="module" src="/src/example2.ts"></script>
+    <main class="content">
+      <div id="fps">
+        <span>FPS:</span><span id="fps-num">0</span>
+      </div>
+
+      <div class="title">
+        <h1>Canvas 渲染引擎</h1>
+        <h2>简单 易用</h2>
+        <h3>支持缩放、旋转、位移等动画，支持 hover、drag、click 等交互事件</h3>
+      </div>
+
+      <div class="demos">
+        <div class="demo">
+          <span>基础图形绘制</span>
+          <div id="demo-basic" class="preview"></div>
+        </div>
+        <div class="demo">
+          <span>阴影、透明度</span>
+          <div id="demo-options" class="preview"></div>
+        </div>
+        <div class="demo">
+          <span>线性、经向渐变</span>
+          <div id="demo-radial" class="preview"></div>
+        </div>
+        <div class="demo">
+          <span>事件响应</span>
+          <div id="demo-events" class="preview"></div>
+        </div>
+        <div class="demo">
+          <span>动画(支持 pause、resume)</span>
+          <div id="demo-anim" class="preview"></div>
+        </div>
+        <div class="demo">
+          <span>图表(实现 TimeLine 效果)</span>
+          <div id="demo-charts" class="preview"></div>
+        </div>
+      </div>
+    </main>
+    
+    <script type="module" src="/src/demo/basic.ts"></script>
+    <script type="module" src="/src/demo/options.ts"></script>
+    <script type="module" src="/src/demo/radial.ts"></script>
+    <script type="module" src="/src/demo/events.ts"></script>
+    <script type="module" src="/src/demo/anim.ts"></script>
+    <script type="module" src="/src/demo/charts.ts"></script>
     <script>
       const fps = document.querySelector("#fps-num");
       let justnow = performance.now();
